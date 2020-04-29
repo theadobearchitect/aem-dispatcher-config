@@ -1,0 +1,16 @@
+#Name of the Dispatcher
+/name "Acme Web Sites"
+
+#Following Environment Variables are required for this configuration to work properly
+# INSTANCE_TYPE {AUTHOR,PUBLISH_NON_PCI,PUBLISH_PCI)
+# RENDER_SERVER_IP {This is the IP of the AEM App Server}
+# RENDER_SERVER_PORT {This is the PORT of the AEM App Server}
+# 
+
+# Each farm configures a set of load balanced renders (i.e. remote servers)
+/farms
+  {
+	#Include all available farms
+	#INSTANCE_TYPE is an environment variable Apache will provide will be of type AUTHOR, PUBLISH
+	$include "dispatcher_${INSTANCE_TYPE}_farm.any"
+  }

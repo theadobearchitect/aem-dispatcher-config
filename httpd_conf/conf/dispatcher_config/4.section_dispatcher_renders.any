@@ -1,0 +1,13 @@
+# The load will be balanced among these render instances
+/renders
+  {
+  /rend01
+	{
+	# Hostname or IP of the render
+	/hostname "${RENDER_SERVER_IP}"
+	# Port of the render
+	/port "${RENDER_SERVER_PORT}"
+	# Connect timeout in milliseconds, 0 to wait indefinitely
+	# /timeout "0"
+	}
+  }

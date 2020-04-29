@@ -1,0 +1,16 @@
+#Name of the Dispatcher
+/name "McAfee CMS Sites"
+
+#Following Environment Variables are required for this configuration to work properly
+# INSTANCE_TYPE {AUTHOR,PUBLISH_NON_PCI,PUBLISH_PCI)
+# PUBLISH_IP {This is the IP of the Publish Server}
+# PUBLISH_PORT {This is the PORT of the Publish Server}
+# 
+
+# Each farm configures a set of load balanced renders (i.e. remote servers)
+/farms
+  {
+	#Include all available farms
+	#INSTANCE_TYPE is an environment variable Apache will provide will be of type AUTHOR, PUBLISH_NON_PCI or PUBLISH_PCI
+	$include "dispatcher_${INSTANCE_TYPE}_farm.any"
+  }

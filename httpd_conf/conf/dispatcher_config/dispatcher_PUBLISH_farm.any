@@ -1,0 +1,22 @@
+# First farm entry
+/publish
+{      
+	#https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html
+	$include "1.section_dispatcher_clientheaders.any"	
+	$include "2.section_dispatcher_virtualhosts.any"	
+	#$include "3.section_dispatcher_sessionmanagement.any"
+	$include "4.section_dispatcher_renders.any"
+	$include "5.section_dispatcher_filter_publish_pci"
+	#$include "6.section_dispatcher_vanity_urls.any"
+	#$include "7.section_dispatcher_propagateSyndPost.any"
+	$include "8.section_dispatcher_cache_author.any"
+	$include "9.section_dispatcher_statistics.any"
+	#$include "10.section_dispatcher_stickyConnectionsFor.any"
+	#$include "11.section_dispatcher_health_check.any"
+	#$include "12.section_dispatcher_retryDelay.any"
+	#$include "13.section_dispatcher_unavailablePenalty.any"
+	#$include "14.section_dispatcher_failover.any"
+}
+    
+      
+   

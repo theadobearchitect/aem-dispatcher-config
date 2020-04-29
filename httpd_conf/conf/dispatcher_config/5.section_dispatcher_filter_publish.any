@@ -1,0 +1,62 @@
+/filter
+      {
+      # Deny everything first and then allow specific entries
+      /0001 { /type "deny" /glob "*" }
+	  
+       # Commerce 
+	  /1007 { /type "allow" /glob "POST /intelsecurity/*" } # allow 
+	  /1008 { /type "allow" /glob "GET /intelsecurity/*" } # allow 
+      /1009 { /type "allow" /glob "GET /etc/clientcontext/*" } # allow client context for commerce feature
+      /1010 { /type "allow" /glob "GET /etc/commerce/*"      } # allow commerce feature
+      /1011 { /type "allow" /glob "* /etc/cloudservices/* *" } # allow facebook/twitter login
+	  /1012 { /type "allow" /glob "GET /etc/designs/*" } # allow
+	#commented out the following - moved it to later in the file - .json
+	 # /1013 { /type "allow" /glob "GET /consumer/services/*" } # allow
+	/1014 { /type "allow" /glob "POST /consumer/services/*" } # allow 
+
+      # Open consoles
+#     /0011 { /type "allow" /url "/admin/*"  }  # allow servlet engine admin
+#     /0012 { /type "allow" /url "/crx/*"    }  # allow content repository
+#     /0013 { /type "allow" /url "/system/*" }  # allow OSGi console
+        
+      # Allow non-public content directories
+#     /0021 { /type "allow" /url "/apps/*"   }  # allow apps access
+#     /0022 { /type "allow" /url "/bin/*"    }
+      /0023 { /type "allow" /url "/content*" }  # disable this rule to allow mapped content only
+      
+#     /0024 { /type "allow" /url "/libs/*"   }
+#     /0025 { /type "deny"  /url "/libs/shindig/proxy*" } # if you enable /libs close access to proxy
+
+#     /0026 { /type "allow" /url "/home/*"   }
+#     /0027 { /type "allow" /url "/tmp/*"    }
+#     /0028 { /type "allow" /url "/var/*"    }
+
+      # Enable specific mime types in non-public content directories 
+      /0041 { /type "allow" /url "*.css"   }  # enable css
+      /0042 { /type "allow" /url "*.gif"   }  # enable gifs
+      /0043 { /type "allow" /url "*.ico"   }  # enable icos
+      /0044 { /type "allow" /url "*.js"    }  # enable javascript
+      /0045 { /type "allow" /url "*.png"   }  # enable png
+#      /0046 { /type "allow" /url "*.swf"   }  # enable flash
+      /0047 { /type "allow" /url "*.jpg"   }  # enable jpg
+      /0048 { /type "allow" /url "*.jpeg"  }  # enable jpeg
+
+      # Enable features 
+      /0062 { /type "allow" /url "/libs/cq/personalization/*"  }  # enable personalization
+
+      # Deny content grabbing
+      /0081 { /type "deny"  /url "*.infinity.json" }
+      /0082 { /type "deny"  /url "*.tidy.json"     }
+      /0083 { /type "deny"  /url "*.sysview.xml"   }
+      /0084 { /type "deny"  /url "*.docview.json"  }
+      /0085 { /type "deny"  /url "*.docview.xml"  }
+      
+      /0086 { /type "deny"  /url "*.*[0-9].json" }
+#     /0087 { /type "allow" /method "GET" /url "*.1.json" }  # allow one-level json requests
+	/0088 { /type "allow"  /url "*/marketing-content/salespitch.salesPitchMarketingContent*.json" }	
+#moved it from high above to here - so that it will execute _after_ the deny for .json - for price servlet
+	  /1013 { /type "allow" /glob "GET /consumer/services/*" } # allow
+
+      # Deny query
+      /0090 { /type "deny"  /url "*.query.json" }
+      }
